@@ -23,19 +23,20 @@ barcodes;
     ) { }
 
     ngOnInit(): void {
-        this.pause = false;
+        // this.pause = false;
     }
     onBarcodeScanningResult(event: any): void {
         console.log("event value 99", event );
         this.barcodes = event.value.barcodes;
 
         if(this.barcodes.length > 0){
-            this.pause = true;
-            this.router.navigate(['/items'],{
-                transition:{
-                    name:"slide"
-                }
-            })
+            // this.pause = true;
+            this.back();
+            // this.router.navigate(['/items'],{
+            //     transition:{
+            //         name:"slide"
+            //     }
+            // })
         }
       }
       back(){
