@@ -23,7 +23,7 @@ barcodes;
     ) { }
 
     ngOnInit(): void {
-        this.pause = false;
+        // this.pause = false;
     }
     @HostListener('unloaded')
     ngOnDestroy(){
