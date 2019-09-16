@@ -4,11 +4,14 @@ import { Routes } from "@angular/router";
 
 import { ItemsComponent } from "./item/items.component";
 import { ItemDetailComponent } from "./item/item-detail.component";
+import { QrDetailsComponent } from "./qr-details/qr-details.component";
 
 const routes: Routes = [
     { path: "", redirectTo: "/items", pathMatch: "full" },
     { path: "items", component: ItemsComponent },
-    { path: "scanComponent", component: ItemDetailComponent }
+    { path: "scanComponent", component: ItemDetailComponent },
+    { path: "qrdetails", component: QrDetailsComponent }
+
 ];
 
 @NgModule({

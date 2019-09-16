@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy, HostListener } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import {RouterExtensions} from 'nativescript-angular/router'
 import { registerElement } from "nativescript-angular/element-registry";
@@ -13,7 +13,7 @@ registerElement("MLKitBarcodeScanner", () => require("nativescript-plugin-fireba
     styleUrls: ["item-detail.component.css"]
 
 })
-export class ItemDetailComponent implements OnInit {
+export class ItemDetailComponent implements OnInit,OnDestroy {
 
 pause: boolean = false;
 barcodes;
@@ -25,13 +25,20 @@ barcodes;
     ngOnInit(): void {
         this.pause = false;
     }
+    @HostListener('unloaded')
+    ngOnDestroy(){
+        console.log("component destroyed");
+        
+    }
+
     onBarcodeScanningResult(event: any): void {
         console.log("event value 99", event );
         this.barcodes = event.value.barcodes;
 
         if(this.barcodes.length > 0){
-            this.pause = true;
-            this.router.navigate(['/items'],{
+            // this.pause = true;
+            // this.back();
+            this.router.navigate(['/qrdetails'],{
                 transition:{
                     name:"slide"
                 }
